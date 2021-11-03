@@ -21,11 +21,11 @@ const { v4:uuidv4 } = require("uuid")
 
 app.set('view engine','ejs')
 app.use('/peerjs', peerServer);
-app.get('/',(req,res) => { 
-	res.redirect(`/${uuidv4()}`)
+app.get('/call',(req,res) => { 
+	res.redirect(`/call/${uuidv4()}`)
 })
 app.use(express.static('public'));
-app.get('/:room', (req,res) => {
+app.get('/call/:room', (req,res) => {
 	res.render('room',{ roomid: req.params.room})
 })
 
