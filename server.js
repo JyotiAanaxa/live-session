@@ -21,11 +21,11 @@ const { v4:uuidv4 } = require("uuid")
 
 app.set('view engine','ejs')
 app.use('/peerjs', peerServer);
-app.get('/call',(req,res) => { 
-	res.redirect(`/call/${uuidv4()}`)
+app.get('/',(req,res) => { 
+	res.redirect(`/${uuidv4()}`)
 })
 app.use(express.static('public'));
-app.get('/call/:room', (req,res) => {
+app.get('/:room', (req,res) => {
 	res.render('room',{ roomid: req.params.room})
 })
 
@@ -34,9 +34,12 @@ io.on('connection' , socket => {
 		console.log("join-room");
 		socket.join(roomid);
 		socket.to(roomid).emit('user connected',userid)
+		socket.on('message', message => {
+			io.to(roomid).emit('createMessage',message)
+		})
 	})
 	
 })
 
 
-server.listen(3000,() => console.log("server up and running "))
+server.listen(process.env.PORT || 3000,() => console.log("server up and running "))
