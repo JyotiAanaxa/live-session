@@ -9,14 +9,15 @@ body {
 
 }
 video {
-    height: 280px;
-    width: 280px;
+    height: 440px;
+    width: 910px;
     object-fit: cover;
     margin: 5px;
 }
 .main{
     height: 100vh;
     display: flex;
+    border: 5px solid #9d1892;
 }
 .main__letf {
     flex: 0.8;
