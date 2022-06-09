@@ -105,3 +105,10 @@ video {
     color: #f5f5f5;
     list-style: none;
 }
+.heading{
+    color: #fff;
+    background: #020202;
+    text-align: center;
+    padding-top: 12px;
+    letter-spacing: 2px;
+}
